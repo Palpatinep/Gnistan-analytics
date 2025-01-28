@@ -134,15 +134,35 @@ input[type="range"] {
   z-index: 1;
   top: 5px;
 }
+
+option{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}
+
+select{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+img:hover{
+    cursor: pointer;
+}
 </style>
 <body>
-    <form>
-        <label for="cars">Choose a match:</label>
-        <select name="cars" id="matches" onchange="matchChange()">
-          <option value="1">Gnistan p10 vs TPS, 11.1.2025</option>
-          <option value="2">Gnistan p10 vs Käpa, 19.1.2025</option>
-        </select>
-    </form>
+    <div style="display: flex;">
+    <img onclick="location.href='home.html'" style="width: 30px; height: 30px; margin-left: 10px;" src="back-arrow-icon.png">
+        <form>
+            <label for="matches" style="margin-left: 30px;">Choose a match:</label>
+            <select name="matches" id="matches" style="margin-left: 20px;" onchange="matchChange()">
+              <option value="1">Gnistan p10 vs TPS, 11.1.2025</option>
+              <option value="2">Gnistan p10 vs Käpa, 19.1.2025</option>
+            </select>
+        </form>
+    </div>
+    
     <br>
 
     <div id="leftdiv">
