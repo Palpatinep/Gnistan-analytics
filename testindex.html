@@ -8,5 +8,77 @@
 <body>
     <a1>TESTINDEX 123123</a1>
     <a href="ReportPitch.html">Click here</a>
+    <br>
+    <!-- <div>
+        <iframe id="videoiframe" type="text/html" src="https://drive.google.com/file/d/1jmx64cq1cVT4_Ereaf_0EFAPf1c3xKw8/preview?t=70" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+    </div> -->
+    <br>
+    <br>
+    <video id="fullmatchvideo" width=50% height="500" controls>
+        <source src="https://d1w1llg3a01ri8.cloudfront.net/p10_kapa_19012025.mp4" type="video/mp4">
+        <source src="movie.ogg" type="video/ogg">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="pauseclick()">PAUSE</button>
+    <button onclick="playclick()">PLAY</button>
+
+    <script>
+
+        function pauseclick()
+        {
+            // console.log("CLICK")
+            
+
+            // var iframe = document.getElementById('videoiframe');
+            // var iframeSrc = iframe.src;
+            // iframe.src = iframeSrc;
+
+            var video = document.getElementById("fullmatchvideo")
+            video.pause();
+
+            
+            // getData();
+
+            fetch("https://d1w1llg3a01ri8.cloudfront.net/Kapa_taglog.txt").then(res => res.json()).then(data => console.log(data))
+
+            // fetch("https://d1w1llg3a01ri8.cloudfront.net/Kapa_taglog.txt", {mode: "no-cors"})
+            // .then(res => console.log(res))
+
+            // Promise.all([
+            // fetch('https://d1w1llg3a01ri8.cloudfront.net/Kapa_taglog.txt', {mode: 'no-cors'}).then(x => x.text()),
+            // ]).then((sampleResp) => {
+            // console.log(sampleResp);
+            // });
+        }
+
+        function playclick()
+        {
+            // var iframe = document.getElementById('videoiframe');
+            // var iframeSrc = iframe.src;
+            // var test = iframeSrc.split("?")
+            
+            // var newtime = test[0] + "?&t=1234"
+            // iframe.src = newtime
+
+            var video = document.getElementById("fullmatchvideo")
+            video.play();
+        }
+
+        // async function getData() {
+        //     const url = "https://d1w1llg3a01ri8.cloudfront.net/Kapa_taglog.txt";
+        //     try {
+        //         const response = await fetch(url);
+        //         if (!response.ok) {
+        //         throw new Error(`Response status: ${response.status}`);
+        //         }
+
+        //         const json = await response.json();
+        //         console.log(json);
+        //     } catch (error) {
+        //         console.error(error.message);
+        //     }
+        // }
+    </script>
+    
 </body>
 </html>

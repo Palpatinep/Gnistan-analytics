@@ -340,10 +340,13 @@ input[type="range"] {
             </div>
             <div id="videodiv" style="visibility: hidden; position: absolute; background-color: rgb(211, 211, 211); border-color: gray; border-radius: 5px; border-width: 2px; border-style: solid; text-align: center; width: 100%;">
                 <video id="fullmatchvideo" width=98% height="500" controls>
-                    <source src="Kapa_fullMatch.mp4" type="video/mp4">
+                    <source src="https://d1w1llg3a01ri8.cloudfront.net/p10_kapa_19012025.mp4" type="video/mp4">
                     <source src="movie.ogg" type="video/ogg">
                   Your browser does not support the video tag.
                 </video>
+                <!-- <iframe id="fullmatchvideo" type="text/html" src="https://drive.google.com/file/d/1jmx64cq1cVT4_Ereaf_0EFAPf1c3xKw8/preview?t=700" width="640" height="480" allow="autoplay" allowfullscreen width=98% height="500"> -->
+
+                </iframe>
                 <span onclick="closevideoclick()" style="float: left; margin-left: 10px; font-size: 12px; cursor: pointer; padding-bottom: 20px;">Close video</span>
                 <span onclick="showVideoSettings()" style="float: right; margin-right: 10px; font-size: 12px; cursor: pointer; padding-bottom: 20px;">Video Settings</span>
                 <div id="videosettingsdiv" style="display: none;">
@@ -15185,8 +15188,12 @@ input[type="range"] {
     {
         if(videoOnDisplay == true)
         {
+            console.log("Video closed")
             document.getElementById("videodiv").style.visibility = "hidden"
             document.getElementById("fullmatchvideo").pause();
+            // var iframe = document.getElementById('fullmatchvideo');
+            // var iframeSrc = iframe.src;
+            // iframe.src = iframeSrc;
             videoOnDisplay = false
         }
         else
@@ -15260,6 +15267,12 @@ input[type="range"] {
         videoOnDisplay = true;
         document.getElementById("fullmatchvideo").currentTime = clipTime;
         document.getElementById("fullmatchvideo").play();
+        // var iframe = document.getElementById('fullmatchvideo');
+        // var iframeSrc = iframe.src;
+        // var test = iframeSrc.split("?")
+        
+        // var newtime = test[0] + "?&t=" + clipTime
+        // iframe.src = newtime
     })
 
     entrylist.addEventListener("mouseover", function (e) {
@@ -15374,6 +15387,13 @@ input[type="range"] {
                         videoOnDisplay = true;
                         document.getElementById("fullmatchvideo").currentTime = clipTime;
                         document.getElementById("fullmatchvideo").play();
+
+                        // var iframe = document.getElementById('fullmatchvideo');
+                        // var iframeSrc = iframe.src;
+                        // var test = iframeSrc.split("?")
+                        
+                        // var newtime = test[0] + "?&t=" + clipTime
+                        // iframe.src = newtime
                     }
                 }
 
@@ -15805,16 +15825,16 @@ input[type="range"] {
                 {
                     if (element.tags[0].goalornot == true)
                     {
-                        var entrytext = document.createTextNode(i + ", " + ownaction + ", Goal, " + element.tags[0].xgvalue + element.tag + ", " + element.timeminute + ":" + modifiedSecond)
+                        var entrytext = document.createTextNode(i + ", " + ownaction + ", Goal, " + element.tags[0].xgvalue + "xG, " + element.timeminute + ":" + modifiedSecond)
                     }
                     else
                     {
-                        var entrytext = document.createTextNode(i + ", " + ownaction + ", " + element.tags[0].xgvalue + element.tag + ", " + element.timeminute + ":" + modifiedSecond)
+                        var entrytext = document.createTextNode(i + ", " + ownaction + ", " + element.tags[0].xgvalue + "xG, " + element.timeminute + ":" + modifiedSecond)
                     }
                 }
                 else
                 {
-                    var entrytext = document.createTextNode(i + ", " + ownaction + ", " + element.tag + ", " + element.timeminute + ":" + modifiedSecond)
+                    var entrytext = document.createTextNode(i + ", " + ownaction + ", " + element.timeminute + ":" + modifiedSecond)
                 }
                 entry.appendChild(entrytext);
                 entrylist.appendChild(entry);
@@ -16159,7 +16179,9 @@ input[type="range"] {
         awaypossec = 0;
         ooppossec = 0;
 
-        poslog.forEach(element => {
+        if (poslog.length > 1)
+        {
+            poslog.forEach(element => {
             if (element.possession == "home" && fromTime <= Math.floor(element.second / 60) && toTime > Math.floor(element.second / 60))
             {
                 homepossec++;
@@ -16172,13 +16194,21 @@ input[type="range"] {
             {
                 ooppossec++;
             }
-        });
+            });
 
-        homeposperc = homepossec / (homepossec + awaypossec)
-        awayposperc = awaypossec / (homepossec + awaypossec)
+            homeposperc = homepossec / (homepossec + awaypossec)
+            awayposperc = awaypossec / (homepossec + awaypossec)
 
-        document.getElementById("homepostext").innerHTML = Math.round(homeposperc * 100) + " %"
-        document.getElementById("awaypostext").innerHTML = Math.round(awayposperc * 100) + " %"
+            document.getElementById("homepostext").innerHTML = Math.round(homeposperc * 100) + " %"
+            document.getElementById("awaypostext").innerHTML = Math.round(awayposperc * 100) + " %"
+        }
+        else
+        {
+            document.getElementById("homepostext").innerHTML = "0 %"
+            document.getElementById("awaypostext").innerHTML = "0 %"
+        }
+
+        
     }
 
 </script>
