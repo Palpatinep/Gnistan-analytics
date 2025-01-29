@@ -189,19 +189,19 @@ img:hover{
 }
 </style>
 <body>
-    <a1 id="mobiletext">Mobile use not available, use PC</a1>
+    <a1 id="mobiletext">Mobile use not available, zoom OUT or use PC</a1>
     <div id="topdiv">
         <img onclick="location.href='index.html'" style="width: 30px; height: 30px; margin-left: 10px;" src="back-arrow-icon.png">
         <form>
             <label for="matches" style="margin-left: 30px;">Choose a match:</label>
-            <select name="matches" id="matches" style="margin-left: 20px;" onchange="matchChange()">
+            <select name="matches" id="matches" style="margin-left: 20px; margin-top: 7px;" onchange="matchChange()">
               <option value="1">Gnistan p10 vs TPS, 11.1.2025</option>
-              <option value="2">Gnistan p10 vs Käpa, 19.1.2025</option>
+              <option value="2">Gnistan p10 vs KäPa, 19.1.2025</option>
             </select>
         </form>
+        <img style="display: block; margin-left: auto; margin-right: 10px" height="35px" width="35px" src="Gnistan.png">
     </div>
-    
-    <br>
+    <hr>
 
     <div id="leftdiv">
         <canvas id="pitchcanvas" width="600" height="850"></canvas>
@@ -609,6 +609,8 @@ img:hover{
             // var iframeSrc = iframe.src;
             // iframe.src = iframeSrc;
             videoOnDisplay = false
+            document.getElementById("videosettingsdiv").style.display = "none";
+            videoSettingsOnDisplay = false
         }
         else
         {
