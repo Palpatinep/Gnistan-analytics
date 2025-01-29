@@ -1610,7 +1610,7 @@ img:hover{
         {
             selectedMatchID = 2;
             Promise.all([
-                fetch("https://d1w1llg3a01ri8.cloudfront.net/Kapa_taglog.txt").then(res => res.json()),
+                fetch("https://d1w1llg3a01ri8.cloudfront.net/p10_kapa_taglog_190125.txt").then(res => res.json()),
                 fetch("https://d1w1llg3a01ri8.cloudfront.net/Kapa_matchvideosettings_190125.txt").then(res => res.json())
             ]).then(data => startReport(data[0], [], data[1]))
         }
@@ -1619,6 +1619,8 @@ img:hover{
             console.log("IOPIOP")
         }
 
+        document.getElementById("taglist").innerHTML = "";
+        
         document.getElementById("xgtext").style.backgroundColor = "white";
         document.getElementById("boxentrytext").style.backgroundColor = "white";
         document.getElementById("presstext").style.backgroundColor = "white";
