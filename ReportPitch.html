@@ -199,6 +199,7 @@ img:hover{
               <option value="1">Gnistan p10 vs TPS, 11.1.2025</option>
               <option value="2">Gnistan p10 vs Jaro, 11.1.2025</option>
               <option value="3">Gnistan p10 vs KäPa, 19.1.2025</option>
+              <option value="4">Gnistan p10 vs HJK, 9.2.2025</option>
             </select>
         </form>
         <img style="display: block; margin-left: auto; margin-right: 10px" height="35px" width="35px" src="Gnistan.png">
@@ -1658,10 +1659,18 @@ img:hover{
         }
         else if (document.getElementById("matches").value == 3)
         {
-            selectedMatchID = 2;
+            selectedMatchID = 3;
             Promise.all([
                 fetch("https://d1w1llg3a01ri8.cloudfront.net/p10_kapa_taglog_190125.txt").then(res => res.json()),
                 fetch("https://d1w1llg3a01ri8.cloudfront.net/Kapa_matchvideosettings_190125.txt").then(res => res.json())
+            ]).then(data => startReport(data[0], [], data[1]))
+        }
+        else if (document.getElementById("matches").value == 4)
+        {
+            selectedMatchID = 4;
+            Promise.all([
+                fetch("https://d1w1llg3a01ri8.cloudfront.net/p10_HJK_taglog_090225.txt").then(res => res.json()),
+                fetch("https://d1w1llg3a01ri8.cloudfront.net/p10_HJK_matchvideosettings_090225.txt").then(res => res.json())
             ]).then(data => startReport(data[0], [], data[1]))
         }
         else
